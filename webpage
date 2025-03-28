@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY SPACE</title>
+    <style>
+        /* FUCK TRADITIONAL DESIGNS */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            background: #000 url('https://as2.ftcdn.net/v2/jpg/05/42/73/17/1000_F_542731787_npIDENXs9NMkl1mtyHKj8De2WBL2vnFW.jpg') no-repeat center fixed;
+            background-size: cover;
+            height: 100vh;
+            overflow: hidden;
+            color: #fff;
+            text-shadow: 0 0 5px #000;
+        }
+
+        #main-container {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #ff4500;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            letter-spacing: -2px;
+            color: #ff4500;
+        }
+
+        #content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .active-tab {
+            display: block;
+        }
+
+        #button-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: none;
+            border: 2px solid #ff4500;
+            color: #ff4500;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-button:hover {
+            background: #ff4500;
+            color: #000;
+        }
+
+        .tab-button.active {
+            background: #ff4500;
+            color: #000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid #333;
+            font-size: 0.8rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* TERMINAL STYLE CONTENT */
+        .terminal {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #ff4500;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 600px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .command {
+            color: #ff4500;
+            font-weight: bold;
+        }
+
+        .response {
+            margin-bottom: 15px;
+        }
+
+        /* NO BULLSHIT PROFILE */
+        #profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #ff4500;
+            margin: 0 auto 20px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-container">
+        <header>
+            <h1>> WHOAMI</h1>
+        </header>
+
+        <main id="content">
+            <img id="profile-pic" src="YOUR_PHOTO.jpg" alt="My Face">
+
+            <div id="about" class="tab-content active-tab">
+                <div class="terminal">
+                    <div class="response"><span class="command">> NAME:</span> [YOUR NAME]</div>
+                    <div class="response"><span class="command">> LOCATION:</span> [YOUR CITY]</div>
+                    <div class="response"><span class="command">> STATUS:</span> [WHAT YOU DO]</div>
+                    <div class="response"><span class="command">> BIO:</span> [SHORT BADASS DESCRIPTION OF YOURSELF]</div>
+                </div>
+            </div>
+
+            <div id="skills" class="tab-content">
+                <div class="terminal">
+                    <div class="response"><span class="command">> SKILLSET:</span></div>
+                    <div class="response">• [SKILL 1]</div>
+                    <div class="response">• [SKILL 2]</div>
+                    <div class="response">• [SKILL 3]</div>
+                    <div class="response">• [SKILL 4]</div>
+                </div>
+            </div>
+
+            <div id="contact" class="tab-content">
+                <div class="terminal">
+                    <div class="response"><span class="command">> EMAIL:</span> [YOUR@EMAIL.COM]</div>
+                    <div class="response"><span class="command">> PHONE:</span> [YOUR NUMBER]</div>
+                    <div class="response"><span class="command">> SOCIALS:</span> [@YOURHANDLE]</div>
+                    <div class="response"><span class="command">> PGP:</span> [IF YOU'RE THAT COOL]</div>
+                </div>
+            </div>
+
+            <div id="work" class="tab-content">
+                <div class="terminal">
+                    <div class="response"><span class="command">> CURRENT:</span> [YOUR JOB/PROJECT]</div>
+                    <div class="response"><span class="command">> PAST:</span> [PREVIOUS WORK]</div>
+                    <div class="response"><span class="command">> PORTFOLIO:</span> [LINK TO YOUR WORK]</div>
+                </div>
+            </div>
+        </main>
+
+        <div id="button-container">
+            <button class="tab-button active" onclick="openTab('about')">ABOUT</button>
+            <button class="tab-button" onclick="openTab('skills')">SKILLS</button>
+            <button class="tab-button" onclick="openTab('contact')">CONTACT</button>
+            <button class="tab-button" onclick="openTab('work')">WORK</button>
+        </div>
+
+        <footer>
+            <p>© [YEAR] [YOUR NAME] | NO BULLSHIT ALLOWED</p>
+        </footer>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tab content
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active-tab");
+            }
+
+            // Remove active class from all buttons
+            const tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            // Show the current tab and mark button as active
+            document.getElementById(tabName).classList.add("active-tab");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
